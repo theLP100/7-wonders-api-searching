@@ -14,22 +14,32 @@ const wonderList = [
 ];
 
 //need to define wonderName.  Will do this in a loop.
-const params = {
-  params: {
-    key: API_KEY,
-    q: "The Great Wall of China", //wonderName
-    format: "json",
-  },
-};
+// const params = {
+//   params: {
+//     key: API_KEY,
+//     q: "The Great Wall of China", //wonderName
+//     format: "json",
+//   },
+// };
 
 //the call to the api
-axios
-  .get(API, params)
-  .then((response) => {
-    const firstEntry = response.data[0];
-
-    console.log("Success!", firstEntry.lat, firstEntry.lon);
-  })
-  .catch((error) => {
-    console.log(`Error: ${error}`);
-  });
+for (const wonderName of wonderList) {
+  console.log(wonderName);
+  axios
+    .get(API, {
+      params: {
+        key: API_KEY,
+        q: wonderName,
+        format: "json",
+      },
+    })
+    .then((response) => {
+      setTimeout(() => {
+        const firstEntry = response.data[0];
+        console.log(wonderName, firstEntry.lat, firstEntry.lon);
+      }, 5000);
+    })
+    .catch((error) => {
+      console.log(`Error: ${error}`);
+    });
+}
