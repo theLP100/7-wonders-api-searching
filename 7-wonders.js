@@ -22,10 +22,13 @@ const params = {
   },
 };
 
+//the call to the api
 axios
   .get(API, params)
   .then((response) => {
-    console.log("Success!", response.data);
+    const firstEntry = response.data[0];
+
+    console.log("Success!", firstEntry.lat, firstEntry.lon);
   })
   .catch((error) => {
     console.log(`Error: ${error}`);
