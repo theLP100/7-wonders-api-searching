@@ -1,15 +1,32 @@
-import {API_key} from env;
 const axios = require("axios");
-const API = "https://us1.locationiq.com/v1/search.php";
+const dotenv = require("dotenv").config();
 
-const wonderList = ['Great Wall of China', 'Petra', 'Colosseum', 'Chichen Itza', 'Machu Picchu', 'Taj Mahal', 'Christ the Redeemer']
-
+const API_KEY = process.env.API_KEY;
+const API = "https://us1.locationiq.com/v1/search";
+const wonderList = [
+  "Great Wall of China",
+  "Petra",
+  "Colosseum",
+  "Chichen Itza",
+  "Machu Picchu",
+  "Taj Mahal",
+  "Christ the Redeemer",
+];
 
 //need to define wonderName.  Will do this in a loop.
 const params = {
   params: {
-    key: API_key,
-    q: wonderName,
-    format: 'json'
-  }
-}
+    key: API_KEY,
+    q: "The Great Wall of China", //wonderName
+    format: "json",
+  },
+};
+
+axios
+  .get(API, params)
+  .then((response) => {
+    console.log("Success!", response.data);
+  })
+  .catch((error) => {
+    console.log(`Error: ${error}`);
+  });

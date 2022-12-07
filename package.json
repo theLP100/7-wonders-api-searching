@@ -1,0 +1,12 @@
+{
+  "name": "LP",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/theLP100/7-wonders-api-searching.git",
+  "author": "LP <lp.passarelli.wilson@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.2.1",
+    "dotenv": "^16.0.3"
+  }
+}
